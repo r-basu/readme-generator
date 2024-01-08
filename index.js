@@ -50,9 +50,8 @@ const questions = [
     name: "license",
     message: "Pick a License:",
     choices: [
-      "GNU AGPLv3",
-      "GNU GPLv3",
-      "GNU LGPLv3",
+      "No License",
+      "GNU GPLv3 License",
       "Mozilla Public License 2.0",
       "Apache License 2.0",
       "MIT License",
@@ -61,7 +60,15 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            console.error('An error occured while writing the file:', err);
+        } else {
+            console.log(`${fileName} file has been created`);
+        }
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -69,7 +76,7 @@ function init() {
     .prompt(questions)
     .then((answers) => {
        const markdown = generateMarkdown(answers);
-       console.log(markdown);
+       writeToFile('README.md', markdown);
     })
     .catch((error) => {
       console.log("An error occured:", error);
