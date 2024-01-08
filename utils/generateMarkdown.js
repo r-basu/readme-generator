@@ -32,7 +32,7 @@ function renderLicenseSection(license) {
   const licenseLink = renderLicenseLink(license)
   licenseSection += `${licenseBadge}\n\n`
 
-  licenseSection += `This application is covered under ${license}.`
+  licenseSection += ` This application is covered under [${license}](${licenseLink}).`
 
   return licenseSection
 }
