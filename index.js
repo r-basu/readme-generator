@@ -85,7 +85,7 @@ function init() {
     .then((answers) => {
       const markdown = generateMarkdown(answers);
       const fileName = 'README.md'
-      const directoryPath = './generated/'
+      const directoryPath = './output/'
       writeToFile(directoryPath, fileName, markdown);
     })
     .catch((error) => {
